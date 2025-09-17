@@ -110,6 +110,8 @@ def downloadSolution(slug: str):
   for codeSample in question['codeSnippets']:
     if codeSample['langSlug'] == 'python3':
       with open(f'./problems/{slug}/solution_{slug.replace("-", "_")}.py', "w") as f:
+        if "List" in codeSample['code']:
+          solution += 'from typing import List\n\n'
         f.write(solution + codeSample['code'])
       break
 
